@@ -1,6 +1,14 @@
+import os
 from pathlib import Path
 
 import environ
+
+if os.name == 'nt':
+    VENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(
+        VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(
+        VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -29,6 +37,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis'
 ]
 
 THIRD_PARTY_APPS = [
@@ -38,6 +47,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'apps.listings',
     'apps.users',
+    'apps.custom_model'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
