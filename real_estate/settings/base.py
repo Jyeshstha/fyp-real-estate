@@ -37,8 +37,10 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.gis'
 ]
+SITE_ID = 1
 
 THIRD_PARTY_APPS = [
     "rest_framework",
@@ -47,7 +49,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'apps.listings',
     'apps.users',
-    'apps.custom_model'
+    'apps.common',
+    'apps.profiles',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
