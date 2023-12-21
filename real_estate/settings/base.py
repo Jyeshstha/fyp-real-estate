@@ -1,12 +1,13 @@
-import environ
 from pathlib import Path
 
-env=environ.Env(
-    DEBUG=(bool,False)
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False)
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-environ.Env.read_env(BASE_DIR/".env")
+environ.Env.read_env(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -19,7 +20,6 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -31,16 +31,16 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS=[
+THIRD_PARTY_APPS = [
     "rest_framework",
 ]
 
-LOCAL_APPS=[
+LOCAL_APPS = [
     'apps.listings',
     'apps.users',
 ]
 
-INSTALLED_APPS=DJANGO_APPS+THIRD_PARTY_APPS+LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'real_estate.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -94,7 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -108,19 +106,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/staticfiles/'
-STATIC_ROOT=BASE_DIR / 'staticfiles'
-STATICFILE_DIR=[]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILE_DIR = []
 
-MEDIA_URL="/mediafiles/"
-MEDIA_ROOT=BASE_DIR / "mediafiles"
-
+MEDIA_URL = "/mediafiles/"
+MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'
